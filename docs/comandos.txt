@@ -1,0 +1,75 @@
+-Criar um projeto node.
+yarn init -y
+
+-Adicionar microframework express p/ api.
+yarn add express
+
+-Adicionar TypeScript no projeto.
+yarn add typeScript -D
+
+* -D = dependência de desenvolvimento
+
+-Configurar projeto para TS
+yarn tsc --init
+
+*gera o arquivo tsconfig.json que é responsável pela config do ts
+Criar pasta src e modificar a linha para apontar onde os arquivos ts estarão(src).
+"rootDir": "./src",
+Também apontar onde estarão os arquivos buildados do ts para js
+"outDir": "./dist", 
+
+-Converter ts(pasta src) para js(pasta dist)
+yarn tsc
+
+  "scripts": {
+    "build": "tsc"
+  },
+  
+para converter utilizando o comando 'yarn build'
+
+-Adicionar inteliSense do express
+yarn add -D @types/express
+
+-Rodar projeto
+node dist/server.js
+
+-Rodar aplicação após um save. (js)
+yarn add nodemon -D
+
+-Buildar e rodar aplicação de forma simples (alternativa do nodemon e babel)
+Nesse caso não são criados os arquivos JS e após um save a aplicação é reiniciada.
+yarn add ts-node-dev -D
+
+Após, editar o package.json
+
+  "scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev src/server.ts"
+  },
+  
+Rodar agora com:
+yarn dev:server  
+
+colocar as propriedades para agilizar o start do servidor:
+--transpile-only (tira a verificação da tipagem do código, ou seja, ocorre o build sem a verificação, não aparecendo warnings. 
+Os problemas com TS só serão avisados pelo VScode.
+
+--ignore node_modules
+Ignora possíveis modificações dos node_modules.
+
+  "scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev --transpile-only --ignore node_modules src/server.ts"
+  },
+  
+Para debug, utilizar o --inspect
+
+_______________
+Libs:
+
+uuidv4 - ids
+date-fns - manipulacao de datas
+
+
+________________________________________________________________________________________
+Docs TypeScript - https://www.notion.so/Typescript-5712aeab312d44fcba0aa88895caad36
