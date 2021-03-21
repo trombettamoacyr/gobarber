@@ -64,7 +64,30 @@ Ignora possíveis modificações dos node_modules.
   
 Para debug, utilizar o --inspect
 
-_______________
+_________________________________________________________
+ORM - Object Relacional Mapping
+
+--add postgres como orm e driver 
+yarn add typeorm pg
+
+--criar ariquivo ormconfig.json na raiz, ex:
+
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "usarname": "postgres",
+    "password": "docker",
+    "database": "gobarber"
+}
+
+Criar pasta database
+
+aquivo index.ts
+import { createConnection } from 'typeorm';
+
+createConnection();
+_________________________________________________________
 Libs:
 
 uuidv4 - ids
