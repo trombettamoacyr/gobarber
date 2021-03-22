@@ -76,9 +76,15 @@ yarn add typeorm pg
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
-    "usarname": "postgres",
+    "username": "postgres",
     "password": "docker",
-    "database": "gobarber"
+    "database": "gobarber",
+    "migrations": [
+        "./src/database/migrations/*.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/database/migrations"
+    }
 }
 
 Criar pasta database
@@ -87,6 +93,32 @@ aquivo index.ts
 import { createConnection } from 'typeorm';
 
 createConnection();
+
+--adicionar as linhas no scripts
+  "scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev --inspect --transpile-only --ignore node_modules src/server.ts",
+    "start": "ts-node src/index.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+
+--executar as migrations no banco
+yarn typeorm migration:run
+
+--adicionar metadata para rodar banco
+yarn add reflect-metadata 
+
+Após, adicionar no server.ts o import do metadata e também adicionar no ormconfig.json a linha:
+
+    "entities" : [
+        "./src/models/*.ts"
+    ],
+
+
+
+
+
+
 _________________________________________________________
 Libs:
 
