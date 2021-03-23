@@ -102,7 +102,7 @@ createConnection();
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
 
---executar as migrations no banco
+--executar as migrations no banco apos alteracoes dos arquivos
 yarn typeorm migration:run
 
 --adicionar metadata para rodar banco
@@ -114,7 +114,8 @@ Após, adicionar no server.ts o import do metadata e também adicionar no ormcon
         "./src/models/*.ts"
     ],
 
-
+--Criar arquivo migration 
+yarn typeorm migration:create -n CreateUsers
 
 
 
