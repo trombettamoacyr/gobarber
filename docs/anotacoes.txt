@@ -125,6 +125,8 @@ Libs:
 
 uuidv4 - ids
 date-fns - manipulacao de datas
+bcryptjs - criptografia de senhas
+jsonwebtoken - tokens de auth
 
 
 ________________________________________________________________________________________
